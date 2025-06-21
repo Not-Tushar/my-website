@@ -146,18 +146,17 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div class="flex items-center"><i class="fas fa-envelope text-blue-500 mr-3"></i> tusharyogi700@gmail.com</div>
-            <div class="flex items-center"><i class="fas fa-phone-alt text-blue-500 mr-3"></i> +91 7009818445</div>
             <div class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-3"></i> India</div>
             <div class="flex items-center"><i class="fas fa-briefcase text-blue-500 mr-3"></i> 4 Years Experience</div>
           </div>
 
-          <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-6">
-            <a href="mailto:tusharyogi700@gmail.com" class="contact-btn text-white px-6 py-2 rounded-full flex items-center justify-center">
+          <div class="flex space-x-2 mb-6">
+            <a href="mailto:tusharyogi700@gmail.com" class="contact-btn text-white px-6 py-2 rounded-full flex items-center">
               <i class="fas fa-paper-plane mr-2"></i> Contact Me
             </a>
-            <button id="downloadCv" class="border border-blue-500 text-blue-500 px-6 py-2 rounded-full flex items-center justify-center hover:bg-blue-50 transition-colors">
+            <a href="#" class="border border-blue-500 text-blue-500 px-6 py-2 rounded-full flex items-center">
               <i class="fas fa-download mr-2"></i> Download CV
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -248,8 +247,8 @@
         <a href="mailto:tusharyogi700@gmail.com" class="contact-btn text-white px-6 py-3 rounded-full flex items-center justify-center">
           <i class="fas fa-envelope mr-2"></i> Email Me
         </a>
-        <a href="tel:+917009818445" class="border border-blue-500 text-blue-500 px-6 py-3 rounded-full flex items-center justify-center">
-          <i class="fas fa-phone-alt mr-2"></i> Call Me
+        <a href="#" class="border border-blue-500 text-blue-500 px-6 py-3 rounded-full flex items-center justify-center">
+          <i class="fas fa-download mr-2"></i> Download CV
         </a>
       </div>
     </section>
@@ -264,82 +263,5 @@
       <p>© 2025 Tushar Yogi. All rights reserved.</p>
     </footer>
   </div>
-
-  <script>
-    // JavaScript for downloading CV
-    document.getElementById('downloadCv').addEventListener('click', function() {
-      // Create a basic PDF structure (in a real scenario, you would link to an actual PDF file)
-      const cvContent = `
-        <html>
-        <head>
-          <title>Tushar Yogi - CV</title>
-          <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-            h1 { color: #1a365d; border-bottom: 2px solid #4299e1; }
-            h2 { color: #2c5282; }
-            .section { margin-bottom: 20px; }
-            .info-item { margin-bottom: 8px; }
-          </style>
-        </head>
-        <body>
-          <h1>Tushar Yogi</h1>
-          <p>Cybersecurity Expert | Ethical Hacker | Network Security Specialist</p>
-          
-          <div class="section">
-            <h2>Contact Information</h2>
-            <div class="info-item"><strong>Email:</strong> tusharyogi700@gmail.com</div>
-            <div class="info-item"><strong>Phone:</strong> +91 7009818445</div>
-            <div class="info-item"><strong>Location:</strong> India</div>
-          </div>
-          
-          <div class="section">
-            <h2>Professional Summary</h2>
-            <p>Cybersecurity professional with 4+ years of experience in ethical hacking, penetration testing, 
-            and network security. Certified ethical hacker passionate about identifying and resolving security vulnerabilities.</p>
-          </div>
-          
-          <div class="section">
-            <h2>Skills</h2>
-            <ul>
-              <li>Kali Linux</li>
-              <li>Debian Distros</li>
-              <li>Python</li>
-              <li>Bash Scripting</li>
-              <li>PAN Hacking</li>
-              <li>Ethical Hacking</li>
-              <li>Penetration Testing</li>
-              <li>Vulnerability Analysis</li>
-            </ul>
-          </div>
-          
-          <div class="section">
-            <h2>Experience</h2>
-            <p><strong>Cybersecurity Consultant</strong> (2021 - Present)</p>
-            <p>Performed penetration testing and secure architecture consulting for high-risk clients.</p>
-            
-            <p><strong>Ethical Hacker</strong> (2019 - 2021)</p>
-            <p>Conducted red team simulations, found zero-day exploits, and built secure automation tools.</p>
-          </div>
-        </body>
-        </html>
-      `;
-      
-      // Create a blob (for demo purposes - in production, replace with link to actual PDF)
-      const blob = new Blob([cvContent], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      
-      // Create a temporary link element
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Tushar_Yogi_CV.pdf'; // Change this to your actual PDF filename
-      document.body.appendChild(a);
-      a.click();
-      
-      // Cleanup
-      setTimeout(() => {
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-      }, 100);
-      
-      // Show a message (for demo purposes)
-      alert('For demonstration purposes, we\'re showing sample CV content. In a production environment, this
+</body>
+</html>
