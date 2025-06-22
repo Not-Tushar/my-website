@@ -2,266 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tushar Yogi - Cybersecurity Professional</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- SEO -->
-  <meta name="description" content="Tushar Yogi – Cybersecurity Expert, Ethical Hacker, Network Security Specialist.">
-  <meta name="keywords" content="Cybersecurity, Ethical Hacking, Kali Linux, Tushar Yogi, Penetration Testing">
-  <meta name="author" content="Tushar Yogi">
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Tushar Yogi - Cybersecurity Expert">
-  <meta property="og:description" content="Cybersecurity consultant with 4+ years of experience in ethical hacking and network security.">
-  <meta property="og:image" content="dp.jpg">
-  <meta property="og:type" content="website">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon | TU$HAR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #1a365d;
-      --secondary: #2c5282;
-      --accent: #4299e1;
-      --dark: #1a202c;
+    /* Base Reset & Layout */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: 'Share Tech Mono', monospace;
+      color: #00fff2; position: relative;
+      background: #000;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      color: var(--dark);
-      line-height: 1.6;
+    /* 👤 Animated Hacker + Gun Background */
+    .bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('hacker_gun_bg.jpg') center/cover no-repeat;
+      filter: brightness(0.2) contrast(1.3);
+      animation: pulseBG 6s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes pulseBG {
+      0%,100% { filter: brightness(0.2) contrast(1.3); }
+      50% { filter: brightness(0.35) contrast(1.5); }
     }
 
-    .profile-card {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+    /* 💠 Foreground Content */
+    .container {
+      position: relative; z-index: 1;
+      text-align: center; padding: 0 20px;
+    }
+    .container img {
+      width: 140px; height: 140px;
+      border-radius: 50%; margin-bottom: 25px;
+      border: 2px solid #00fff2;
+      box-shadow: 0 0 15px #00fff2cc;
     }
 
-    .profile-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    /* ⚡ Glitchy Text */
+    .glitch {
+      position: relative; font-size: 2.2rem;
+      animation: glitchShift 1s infinite;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute; left: 0; width: 100%;
+    }
+    .glitch::before {
+      top: -2px; color: #ff00f0; animation: glitchTop 1s infinite;
+    }
+    .glitch::after {
+      bottom: -2px; color: #00ffff; animation: glitchBottom 1s infinite;
+    }
+    @keyframes glitchShift {
+      0%,100% { transform: none; }
+      20% { transform: translate(2px, -1px); }
+      40% { transform: translate(-2px, 1px); }
+      60% { transform: translate(1px, 2px); }
+      80% { transform: translate(-1px, -2px); }
+    }
+    @keyframes glitchTop {
+      0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, 0); }
+      50% { clip-path: inset(0 0 20% 0); transform: translate(2px, 1px); }
+      100% { clip-path: inset(0 0 80% 0); transform: translate(-2px, 0); }
+    }
+    @keyframes glitchBottom {
+      0% { clip-path: inset(80% 0 0 0); transform: translate(2px, 1px); }
+      50% { clip-path: inset(20% 0 0 0); transform: translate(-2px, -1px); }
+      100% { clip-path: inset(80% 0 0 0); transform: translate(2px, 1px); }
     }
 
-    .profile-img {
-      border: 5px solid white;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+    p {
+      margin-top: 20px; font-size: 1.1rem; color: #aaffff;
     }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
-
-    .skill-badge {
-      background-color: var(--accent);
-      color: white;
-      transition: all 0.3s ease;
-    }
-
-    .skill-badge:hover {
-      background-color: var(--secondary);
-      transform: translateY(-2px);
-    }
-
-    .contact-btn {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      transition: all 0.3s ease;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
-    }
-
-    .achievement-card {
-      background: white;
-      border-left: 4px solid var(--accent);
-      transition: all 0.3s ease;
-    }
-
-    .achievement-card:hover {
-      transform: translateX(5px);
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .glow-text {
-      text-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-
-    .floating {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .animate-fadeIn {
-      animation: fadeIn 0.6s ease-out forwards;
+    strong {
+      color: #fff; text-shadow: 0 0 8px #00fff2;
     }
   </style>
 </head>
-<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-6xl mx-auto">
-    <!-- Header -->
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-800 mb-2 glow-text">Tushar Yogi</h1>
-      <p class="text-xl text-gray-600">Cybersecurity Expert | Ethical Hacker | Network Security Specialist</p>
-    </header>
+<body>
 
-    <!-- Profile Card -->
-    <div class="profile-card overflow-hidden mb-10 p-4">
-      <div class="flex flex-col md:flex-row items-center md:items-start">
-        <!-- Image -->
-        <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
-          <div class="relative">
-            <img src="dp.jpg" alt="Tushar Yogi Profile" class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover profile-img floating" />
-            <div class="absolute -bottom-2 -right-2 bg-blue-500 text-white rounded-full p-2 shadow-lg">
-              <i class="fas fa-shield-alt text-xl"></i>
-            </div>
-          </div>
-        </div>
+  <div class="bg"></div>
 
-        <!-- Info -->
-        <div class="md:w-2/3 md:pl-6 text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">About Me</h2>
-          <p class="text-gray-600 mb-4">
-            Cybersecurity professional with 4+ years of experience in ethical hacking, penetration testing, and network security.
-            Certified ethical hacker passionate about identifying and resolving security vulnerabilities.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-            <div class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope text-blue-500 mr-3"></i> tusharyogi700@gmail.com</div>
-            <div class="flex items-center justify-center md:justify-start"><i class="fas fa-map-marker-alt text-blue-500 mr-3"></i> India</div>
-            <div class="flex items-center justify-center md:justify-start"><i class="fas fa-briefcase text-blue-500 mr-3"></i> 4 Years Experience</div>
-          </div>
-
-          <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
-            <a href="mailto:tusharyogi700@gmail.com" class="contact-btn text-white px-6 py-2 rounded-full flex items-center justify-center">
-              <i class="fas fa-paper-plane mr-2"></i> Contact Me
-            </a>
-            <a href="#" class="border border-blue-500 text-blue-500 px-6 py-2 rounded-full flex items-center justify-center">
-              <i class="fas fa-download mr-2"></i> Download CV
-            </a>
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <img src="dp.jpg" alt="TU$HAR's Pic">
+    <div class="glitch" data-text="This site is under construction.">
+      This site is under construction.
     </div>
-
-    <!-- Skills -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Technical Skills</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fab fa-linux mr-2"></i>Kali Linux</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fab fa-ubuntu mr-2"></i>Debian Distros</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fab fa-python mr-2"></i>Python</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fas fa-terminal mr-2"></i>Bash Scripting</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fas fa-network-wired mr-2"></i>PAN Hacking</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fas fa-shield-alt mr-2"></i>Ethical Hacking</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fas fa-lock mr-2"></i>Penetration Testing</div>
-        <div class="skill-badge px-4 py-2 rounded-full text-center"><i class="fas fa-search mr-2"></i>Vulnerability Analysis</div>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Professional Achievements</h2>
-      <div class="space-y-4">
-        <div class="achievement-card p-6 rounded-lg animate-fadeIn">
-          <div class="flex items-start">
-            <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-laptop-code text-blue-500"></i></div>
-            <div>
-              <h3 class="text-xl font-semibold">Web Security Assessments</h3>
-              <p class="text-gray-600">Identified and reported vulnerabilities in 15+ websites to improve organization security.</p>
-            </div>
-          </div>
-        </div>
-        <div class="achievement-card p-6 rounded-lg animate-fadeIn">
-          <div class="flex items-start">
-            <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-building text-blue-500"></i></div>
-            <div>
-              <h3 class="text-xl font-semibold">Corporate Engagements</h3>
-              <p class="text-gray-600">Conducted full security audits for 4 companies and improved infrastructure resilience.</p>
-            </div>
-          </div>
-        </div>
-        <div class="achievement-card p-6 rounded-lg animate-fadeIn">
-          <div class="flex items-start">
-            <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-network-wired text-blue-500"></i></div>
-            <div>
-              <h3 class="text-xl font-semibold">Network Security Specialist</h3>
-              <p class="text-gray-600">Expert in Palo Alto Networks & advanced firewall configuration and penetration testing.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Professional Experience</h2>
-      <div class="relative">
-        <div class="absolute left-1/2 w-1 bg-blue-200 h-full transform -translate-x-1/2 sm:left-1/2"></div>
-
-        <div class="relative mb-8">
-          <div class="flex justify-center"><div class="w-5 h-5 bg-blue-500 rounded-full z-10"></div></div>
-          <div class="mt-4 bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h3 class="text-xl font-semibold">Cybersecurity Consultant</h3>
-            <p class="text-gray-600">2021 - Present</p>
-            <p class="mt-2">Performed penetration testing and secure architecture consulting for high-risk clients.</p>
-          </div>
-        </div>
-
-        <div class="relative mb-8">
-          <div class="flex justify-center"><div class="w-5 h-5 bg-blue-500 rounded-full z-10"></div></div>
-          <div class="mt-4 bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h3 class="text-xl font-semibold">Ethical Hacker</h3>
-            <p class="text-gray-600">2019 - 2021</p>
-            <p class="mt-2">Conducted red team simulations, found zero-day exploits, and built secure automation tools.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="profile-card p-8 text-center">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
-      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-        Looking to secure your systems or need cybersecurity consultation? I'm open to freelance and full-time opportunities.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <a href="mailto:tusharyogi700@gmail.com" class="contact-btn text-white px-6 py-3 rounded-full flex items-center justify-center">
-          <i class="fas fa-envelope mr-2"></i> Email Me
-        </a>
-        <a href="#" class="border border-blue-500 text-blue-500 px-6 py-3 rounded-full flex items-center justify-center">
-          <i class="fas fa-download mr-2"></i> Download CV
-        </a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mt-12 text-center text-gray-600">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github text-2xl"></i></a>
-        <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin text-2xl"></i></a>
-        <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-twitter text-2xl"></i></a>
-      </div>
-      <p>© 2025 Tushar Yogi. All rights reserved.</p>
-    </footer>
+    <p>We meet soon.<br><strong>— TU$HAR</strong></p>
   </div>
+
 </body>
 </html>
