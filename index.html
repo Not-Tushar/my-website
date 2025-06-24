@@ -6,7 +6,7 @@
   <title>Advanced Hacking Tutorials | Hosted by TUSHAR</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@600&display=swap');
 
     :root {
       --neon-green: #00ff88;
@@ -34,7 +34,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.25;
+      opacity: 0.2;
       filter: brightness(0.6);
     }
 
@@ -49,17 +49,16 @@
     }
 
     .topic-box {
-      background: rgba(18, 18, 18, 0.5);
+      background: rgba(18, 18, 18, 0.6);
       border: 1px solid rgba(0, 255, 136, 0.2);
       border-radius: 0.75rem;
-      padding: 0.5rem;
+      padding: 0.75rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      backdrop-filter: blur(3px);
-      height: 80px;
+      backdrop-filter: blur(4px);
       cursor: pointer;
     }
 
@@ -70,8 +69,8 @@
     }
 
     .number-badge {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       font-size: 0.75rem;
       background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
       color: #000;
@@ -84,20 +83,11 @@
       box-shadow: 0 0 4px rgba(0, 255, 136, 0.4);
     }
 
-    .available-badge,
     .coming-soon-badge {
       padding: 0.1rem 0.4rem;
       font-size: 0.6rem;
       font-weight: bold;
       border-radius: 9999px;
-    }
-
-    .available-badge {
-      background: linear-gradient(135deg, var(--neon-green), #00cc77);
-      color: #000;
-    }
-
-    .coming-soon-badge {
       background: linear-gradient(135deg, #666666, #444444);
       color: #aaa;
     }
@@ -138,13 +128,11 @@
     </div>
 
     <!-- Video Grid -->
-    <div class="w-full max-w-5xl mx-auto mt-10">
+    <div class="w-full max-w-6xl mx-auto mt-10">
       <h2 class="text-xl md:text-2xl font-bold mb-4 title-font glow-text px-4 flex items-center">
         <span class="mr-2">📽️</span> Video Library
       </h2>
-      <div class="grid grid-cols-5 gap-4 px-4" id="videoGrid">
-        <!-- JS will populate video buttons -->
-      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4" id="videoGrid"></div>
     </div>
 
     <!-- Footer -->
@@ -162,43 +150,36 @@
     // Set dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Only 5 video entries as requested
-    const videoLinks = [
-      "", "", "", "", "" // Add actual links here
-    ];
+    // 30 video placeholders (replace "" with real URLs to activate)
+    const videoLinks = Array(30).fill(""); // ← you can set actual links later
 
-    // Generate video boxes
     document.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById("videoGrid");
 
-      for (let i = 0; i < videoLinks.length; i++) {
-        const videoNumber = i + 1;
+      for (let i = 0; i < 30; i++) {
+        const box = document.createElement("div");
+        const number = i + 1;
         const hasLink = videoLinks[i] && videoLinks[i].trim() !== "";
 
-        const box = document.createElement("div");
         box.className = "topic-box";
         box.innerHTML = `
-          <div class="number-badge">${videoNumber}</div>
-          <div>
-            <div class="text-[10px] uppercase tracking-wider text-gray-400 mb-0.5">Ep ${videoNumber}</div>
-            <div class="${hasLink ? "available-badge" : "coming-soon-badge"}">
-              ${hasLink ? "Play" : "Soon"}
-            </div>
-          </div>
+          <div class="number-badge">${number}</div>
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 mb-1">Episode ${number}</div>
+          <div class="coming-soon-badge">${hasLink ? "Play" : "Coming Soon"}</div>
         `;
 
         box.addEventListener("click", () => {
           if (hasLink) {
             window.open(videoLinks[i], "_blank");
           } else {
-            alert(`Video ${videoNumber} is coming soon!`);
+            alert(\`Episode \${number} is coming soon!\`);
           }
         });
 
         container.appendChild(box);
       }
 
-      // Typing animation
+      // Typing subtitle animation
       const subtitle = document.querySelector(".subtitle");
       const originalText = subtitle.textContent;
       subtitle.textContent = "";
