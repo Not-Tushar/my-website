@@ -1,206 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ADVANCED HACKING TUTORIALS</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Courier New', monospace;
-      color: #00ff00;
-      background-color: #0e0e0e;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    #video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-      object-fit: cover;
-      filter: brightness(0.3);
-    }
+        body {
+            background-color: #121212;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    h1 {
-      font-size: 3em;
-      text-shadow: 0 0 15px #00ff00;
-      animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #00ff00;
-    }
+        /* Login Page Styles */
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            width: 400px;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.7); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+        }
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #00ff00 }
-    }
+        .login-container h1 {
+            margin-bottom: 30px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
 
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-    .video-btn {
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #00ff00;
-      color: #00ff00;
-      padding: 1rem;
-      font-size: 1rem;
-      font-family: 'Courier New', monospace;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffff;
+        }
 
-    .video-btn:hover {
-      background-color: rgba(0, 255, 0, 0.2);
-      box-shadow: 0 0 20px #00ff00;
-    }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
 
-    .audio-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #00ff00;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 10;
-    }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #00ffff;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-    .audio-control i {
-      color: #00ff00;
-    }
+        .login-btn:hover {
+            background-color: #00e6e6;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
 
-    footer {
-      text-align: center;
-      padding-top: 2rem;
-    }
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .coming-soon {
-      font-size: 0.8rem;
-      color: #ff4d4d;
-      display: none;
-      text-align: center;
-      margin-top: 5px;
-    }
-  </style>
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            animation: textGlow 1.5s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 255, 255, 1); }
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: typing 3s steps(30) infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00ffff; }
+            to { text-shadow: 0 0 15px #00ffff, 0 0 20px #00ffff; }
+        }
+
+        .credits {
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #aaa;
+            font-size: 1.2rem;
+        }
+
+        .credits p {
+            margin: 10px 0;
+        }
+
+        .highlight {
+            color: #ff5555;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff5555;
+            animation: highlightPulse 1.5s infinite;
+        }
+
+        @keyframes highlightPulse {
+            0% { text-shadow: 0 0 5px #ff5555; }
+            50% { text-shadow: 0 0 15px #ff5555; }
+            100% { text-shadow: 0 0 5px #ff5555; }
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .cyber-button {
+            padding: 15px;
+            background-color: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            color: #00ffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent, transparent, transparent,
+                rgba(0, 255, 255, 0.1),
+                transparent, transparent, transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        .cyber-button:hover {
+            background-color: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .live-text {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #00ffff;
+            font-size: 0.9rem;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .link-inputs {
+            margin-top: 30px;
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .link-input {
+            margin-bottom: 15px;
+        }
+
+        .link-input label {
+            display: block;
+            color: #00ffff;
+            margin-bottom: 5px;
+        }
+
+        .link-input input {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #00ffff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .save-btn {
+            background: #00ffff;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-
-  <video autoplay muted loop id="video-background">
-    <source src="mp.mp4" type="video/mp4" />
-  </video>
-
-  <audio id="bg-music" loop>
-    <source src="hell.mp3" type="audio/mpeg" />
-  </audio>
-
-  <!-- Navigation -->
-  <nav class="container-fluid">
-    <ul><li><strong>HACK TUTORIALS</strong></li></ul>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Resources</a></li>
-      <li><a href="#" role="button">Join Us</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="container">
-    <div class="grid">
-      <section>
-        <hgroup>
-          <h2>ADVANCED HACKING TUTORIALS</h2>
-          <h3>Hosted by Tuhsar | Developer: Sohel</h3>
-        </hgroup>
-        <div class="video-grid" id="video-container"></div>
-      </section>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <h1>Cybersecurity Portal</h1>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password">
+        </div>
+        <button class="login-btn" onclick="login()">ACCESS SYSTEM</button>
     </div>
-  </main>
 
-  <!-- Audio Button -->
-  <div class="audio-control" id="audio-control" onclick="toggleAudio()">
-    <i class="fas fa-music"></i>
-  </div>
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <video class="video-background" autoplay muted loop>
+            <source src="mp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <audio autoplay loop>
+            <source src="hell.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="content">
+            <div class="header">
+                <h1>Advanced Cybersecurity Technique</h1>
+                <p>Hosted by Tushar</p>
+            </div>
+            <div class="credits">
+                <p>Developer: <span class="highlight">Sohel</span></p>
+                <p>Manager: <span class="highlight">Rohit</span></p>
+            </div>
+            <div class="button-grid" id="buttonGrid">
+                <!-- Buttons will be generated by JavaScript -->
+            </div>
+            <div class="link-inputs" id="linkInputs" style="display:none;">
+                <h3>Customize Button Links</h3>
+                <div id="inputsContainer"></div>
+                <button class="save-btn" onclick="saveLinks()">Save Links</button>
+            </div>
+            <div class="live-text" id="liveText">System Active: <span id="dateTime"></span></div>
+        </div>
+    </div>
 
-  <!-- Footer -->
-  <footer class="container">
-    <small><a href="#">Privacy Policy</a> • <a href="#">Contact</a></small>
-  </footer>
+    <script>
+        // Button configuration (you can update these with your actual links)
+        let buttons = [
+            { title: "Video 1", url: "https://example.com/video1", enabled: true },
+            { title: "Video 2", url: "https://example.com/video2", enabled: true },
+            { title: "Video 3", url: "https://example.com/video3", enabled: true },
+            { title: "Video 4", url: "https://example.com/video4", enabled: true },
+            { title: "Video 5", url: "https://example.com/video5", enabled: true },
+            { title: "Video 6", url: "https://example.com/video6", enabled: true },
+            { title: "Video 7", url: "https://example.com/video7", enabled: true },
+            { title: "Video 8", url: "https://example.com/video8", enabled: true },
+            { title: "Video 9", url: "https://example.com/video9", enabled: true },
+            { title: "Video 10", url: "https://example.com/video10", enabled: true },
+            { title: "Video 11", url: "https://example.com/video11", enabled: true },
+            { title: "Video 12", url: "https://example.com/video12", enabled: true },
+            { title: "Video 13", url: "https://example.com/video13", enabled: true },
+            { title: "Video 14", url: "https://example.com/video14", enabled: true },
+            { title: "Video 15", url: "https://example.com/video15", enabled: true },
+            { title: "Video 16", url: "https://example.com/video16", enabled: true },
+            { title: "Video 17", url: "https://example.com/video17", enabled: true },
+            { title: "Video 18", url: "https://example.com/video18", enabled: true },
+            { title: "Video 19", url: "https://example.com/video19", enabled: true },
+            { title: "Video 20", url: "https://example.com/video20", enabled: true },
+            { title: "Video 21", url: "https://example.com/video21", enabled: true },
+            { title: "Video 22", url: "https://example.com/video22", enabled: true },
+            { title: "Video 23", url: "https://example.com/video23", enabled: true },
+            { title: "Video 24", url: "https://example.com/video24", enabled: true },
+            { title: "Video 25", url: "https://example.com/video25", enabled: true },
+            { title: "Video 26", url: "https://example.com/video26", enabled: true },
+            { title: "Video 27", url: "https://example.com/video27", enabled: true },
+            { title: "Video 28", url: "https://example.com/video28", enabled: true },
+            { title: "Video 29", url: "https://example.com/video29", enabled: true },
+            { title: "Video 30", url: "https://example.com/video30", enabled: true }
+        ];
 
-  <script>
-    const videoContainer = document.getElementById('video-container');
-    const videoLinks = Array.from({ length: 30 }, (_, i) =>
-      `https://example.com/video${i + 1}`
-    );
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-    videoLinks.forEach((link, i) => {
-      const videoBtn = document.createElement('button');
-      videoBtn.className = 'video-btn';
-      videoBtn.textContent = `Tutorial ${i + 1}`;
-      videoBtn.onclick = () => {
-        if (link) {
-          window.open(link, '_blank');
-        } else {
-          document.querySelectorAll('.coming-soon').forEach(el => el.style.display = 'none');
-          comingSoon.style.display = 'block';
+            if (username === 'admin' && password === 'TU$HAR') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                
+                // Play background audio
+                const audio = document.querySelector('audio');
+                audio.volume = 0.3;
+                audio.play();
+                
+                // Start live text updates
+                updateDateTime();
+                setInterval(updateDateTime, 1000);
+                
+                // Generate buttons
+                renderButtons();
+            } else {
+                alert('Invalid credentials! Username: admin, Password: TU$HAR');
+            }
         }
-      };
 
-      const comingSoon = document.createElement('div');
-      comingSoon.className = 'coming-soon';
-      comingSoon.textContent = 'Coming Soon';
+        function renderButtons() {
+            const buttonGrid = document.getElementById('buttonGrid');
+            buttonGrid.innerHTML = '';
+            
+            buttons.forEach((button, index) => {
+                const btn = document.createElement('a');
+                btn.href = button.url;
+                btn.target = "_blank";
+                btn.className = 'cyber-button';
+                btn.innerHTML = `<div class="video-number">${index + 1}</div><div class="video-title">${button.title}</div>`;
+                
+                buttonGrid.appendChild(btn);
+            });
+        }
 
-      const wrapper = document.createElement('div');
-      wrapper.appendChild(videoBtn);
-      wrapper.appendChild(comingSoon);
+        function saveLinks() {
+            // Functionality to save links can be implemented here
+            alert('Links saved successfully! To edit links again, refresh the page.');
+        }
 
-      videoContainer.appendChild(wrapper);
-    });
-
-    const bgMusic = document.getElementById('bg-music');
-    const audioControl = document.getElementById('audio-control');
-    let isPlaying = false;
-
-    function tryAutoplay() {
-      const promise = bgMusic.play();
-      if (promise !== undefined) {
-        promise.then(() => {
-          isPlaying = true;
-          audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
-        }).catch(() => {
-          isPlaying = false;
-          audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        });
-      }
-    }
-
-    window.addEventListener('load', tryAutoplay);
-
-    function toggleAudio() {
-      if (isPlaying) {
-        bgMusic.pause();
-        audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
-      } else {
-        bgMusic.play();
-        audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
-      }
-      isPlaying = !isPlaying;
-    }
-  </script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('dateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+    </script>
 </body>
 </html>
