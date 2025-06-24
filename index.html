@@ -3,397 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Portal</title>
+    <title>Advanced Cybersecurity Training | Host By Tushar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #457b9d;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+            --light: #f1faee;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #121212;
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Login Page Styles */
-        .login-container {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            width: 400px;
-            text-align: center;
-            z-index: 2;
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.7); }
-            100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
-        }
-
-        .login-container h1 {
-            margin-bottom: 30px;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #00ffff;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #00ffff;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #00ffff;
-            color: #121212;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .login-btn:hover {
-            background-color: #00e6e6;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-        }
-
-        /* Dashboard Styles */
-        .dashboard {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
+        #video-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.3;
+            z-index: -100;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            opacity: 0.7;
+            filter: brightness(0.4) contrast(1.1);
         }
 
         .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
             position: relative;
-            z-index: 2;
-            padding: 40px;
+            z-index: 1;
+        }
+
+        header {
             text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: rgba(29, 53, 87, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .header {
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            margin-bottom: 10px;
-            position: relative;
+        .host-badge {
             display: inline-block;
-            animation: textGlow 1.5s infinite alternate;
-        }
-
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
-            100% { text-shadow: 0 0 20px rgba(0, 255, 255, 1); }
-        }
-
-        .header h1::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-            animation: typing 3s steps(30) infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .header p {
-            font-size: 1.5rem;
-            color: #00ffff;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 5px #00ffff; }
-            to { text-shadow: 0 0 15px #00ffff, 0 0 20px #00ffff; }
-        }
-
-        .credits {
-            margin-bottom: 30px;
-            font-style: italic;
-            color: #aaa;
+            background: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.6);
+            animation: pulse 2s infinite alternate;
         }
 
-        .credits p {
-            margin: 10px 0;
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), var(--light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+            text-transform: uppercase;
         }
 
-        .highlight {
-            color: #ff5555;
+        .tagline {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .tagline::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: var(--primary);
+            margin: 1.5rem auto 0;
+        }
+
+        .video-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(69, 123, 157, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 218, 220, 0.2);
+        }
+
+        .video-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #ff4d4d);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
             font-weight: bold;
-            text-shadow: 0 0 5px #ff5555;
-            animation: highlightPulse 1.5s infinite;
-        }
-
-        @keyframes highlightPulse {
-            0% { text-shadow: 0 0 5px #ff5555; }
-            50% { text-shadow: 0 0 15px #ff5555; }
-            100% { text-shadow: 0 0 5px #ff5555; }
-        }
-
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .cyber-button {
-            padding: 15px;
-            background-color: rgba(0, 255, 255, 0.1);
-            border: 1px solid #00ffff;
-            border-radius: 5px;
-            color: #00ffff;
-            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            font-family: 'Orbitron', sans-serif;
+            margin: 1rem 0;
         }
 
-        .cyber-button::before {
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.6);
+        }
+
+        .cta-button::after {
             content: '';
             position: absolute;
             top: -50%;
+            right: -50%;
+            bottom: -50%;
             left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent, transparent, transparent,
-                rgba(0, 255, 255, 0.1),
-                transparent, transparent, transparent
-            );
-            transform: rotate(30deg);
-            animation: shine 3s infinite;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0));
+            transform: rotateZ(60deg) translate(-5em, 7.5em);
+            animation: sheen 3s infinite;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(29, 53, 87, 0.8);
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .credits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .credit-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .developer {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .manager {
+            color: #f72585;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(230, 57, 70, 0.6); }
+            100% { box-shadow: 0 4px 25px rgba(230, 57, 70, 0.9); }
         }
 
         @keyframes shine {
-            0% { transform: rotate(30deg) translate(-30%, -30%); }
-            100% { transform: rotate(30deg) translate(30%, 30%); }
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
-        .cyber-button:hover {
-            background-color: rgba(0, 255, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            transform: translateY(-3px);
+        @keyframes sheen {
+            100% { transform: rotateZ(60deg) translate(1em, -7.5em); }
         }
 
-        .live-text {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            color: #00ffff;
-            font-size: 0.9rem;
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        .error-message {
-            color: #ff5555;
-            margin-top: 10px;
-            display: none;
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .host-badge {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Login Page -->
-    <div class="login-container" id="loginPage">
-        <h1>Cybersecurity Portal</h1>
-        <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter username">
-        </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter password">
-        </div>
-        <div class="error-message" id="errorMessage">Invalid credentials! Username: admin, Password: TU$HAR</div>
-        <button class="login-btn" onclick="login()">ACCESS SYSTEM</button>
+    <div id="video-container">
+        <video id="video-background" autoplay muted loop>
+            <source src="mp.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <!-- Dashboard -->
-    <div class="dashboard" id="dashboard">
-        <video class="video-background" id="bgVideo" autoplay muted loop>
-            <source src="mp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <audio id="bgAudio" autoplay loop>
-            <source src="hell.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-        <div class="content">
-            <div class="header">
-                <h1>Advanced Cybersecurity Technique</h1>
-                <p>Hosted by Tushar</p>
-            </div>
-            <div class="credits">
-                <p>Developer: <span class="highlight">Sohel</span></p>
-                <p>Manager: <span class="highlight">Rohit</span></p>
-            </div>
-            <div class="button-grid" id="buttonGrid">
-                <!-- Buttons will be generated by JavaScript -->
-            </div>
-            <div class="live-text" id="liveText">System Active: <span id="dateTime"></span></div>
+    <!-- Background Audio -->
+    <audio id="background-music" autoplay loop>
+        <source src="hell.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="content">
+        <header>
+            <div class="host-badge">HOST BY TUSHAR</div>
+            <h1>Advanced Cybersecurity</h1>
+            <p class="tagline">
+                Free access to 30+ training videos covering the latest cybersecurity techniques
+            </p>
+        </header>
+
+        <div class="video-section">
+            <h2>Comprehensive Video Library</h2>
+            <p>Get instant access to our collection of premium cybersecurity training videos</p>
+            <button id="redirect-btn" class="cta-button">
+                <i class="fas fa-lock-open"></i> Access Now
+            </button>
         </div>
+
+        <footer>
+            <div>Advanced Cybersecurity Training Program</div>
+            <div class="credits">
+                <div class="credit-item">
+                    <span class="credit-icon"><i class="fas fa-code"></i></span>
+                    <span>Developer: <span class="developer">Sohel</span></span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-icon"><i class="fas fa-tasks"></i></span>
+                    <span>Manager: <span class="manager">Rohit</span></span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // Button configuration (you can update these with your actual links)
-        let buttons = [
-            { title: "Video 1", url: "https://example.com/video1", enabled: true },
-            { title: "Video 2", url: "https://example.com/video2", enabled: true },
-            { title: "Video 3", url: "https://example.com/video3", enabled: true },
-            { title: "Video 4", url: "https://example.com/video4", enabled: true },
-            { title: "Video 5", url: "https://example.com/video5", enabled: true },
-            { title: "Video 6", url: "https://example.com/video6", enabled: true },
-            { title: "Video 7", url: "https://example.com/video7", enabled: true },
-            { title: "Video 8", url: "https://example.com/video8", enabled: true },
-            { title: "Video 9", url: "https://example.com/video9", enabled: true },
-            { title: "Video 10", url: "https://example.com/video10", enabled: true },
-            { title: "Video 11", url: "https://example.com/video11", enabled: true },
-            { title: "Video 12", url: "https://example.com/video12", enabled: true },
-            { title: "Video 13", url: "https://example.com/video13", enabled: true },
-            { title: "Video 14", url: "https://example.com/video14", enabled: true },
-            { title: "Video 15", url: "https://example.com/video15", enabled: true },
-            { title: "Video 16", url: "https://example.com/video16", enabled: true },
-            { title: "Video 17", url: "https://example.com/video17", enabled: true },
-            { title: "Video 18", url: "https://example.com/video18", enabled: true },
-            { title: "Video 19", url: "https://example.com/video19", enabled: true },
-            { title: "Video 20", url: "https://example.com/video20", enabled: true },
-            { title: "Video 21", url: "https://example.com/video21", enabled: true },
-            { title: "Video 22", url: "https://example.com/video22", enabled: true },
-            { title: "Video 23", url: "https://example.com/video23", enabled: true },
-            { title: "Video 24", url: "https://example.com/video24", enabled: true },
-            { title: "Video 25", url: "https://example.com/video25", enabled: true },
-            { title: "Video 26", url: "https://example.com/video26", enabled: true },
-            { title: "Video 27", url: "https://example.com/video27", enabled: true },
-            { title: "Video 28", url: "https://example.com/video28", enabled: true },
-            { title: "Video 29", url: "https://example.com/video29", enabled: true },
-            { title: "Video 30", url: "https://example.com/video30", enabled: true }
-        ];
-
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
-            const bgVideo = document.getElementById('bgVideo');
-            const bgAudio = document.getElementById('bgAudio');
-
-            // Reset error message
-            errorMessage.style.display = 'none';
-
-            if (username === 'admin' && password === 'TU$HAR') {
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
-                
-                // Play background media only if credentials are correct
-                bgVideo.play();
-                bgAudio.volume = 0.3;
-                bgAudio.play();
-                
-                // Start live text updates
-                updateDateTime();
-                setInterval(updateDateTime, 1000);
-                
-                // Generate buttons
-                renderButtons();
-            } else {
-                // Pause background media if credentials are wrong
-                bgVideo.pause();
-                bgAudio.pause();
-                errorMessage.style.display = 'block';
-            }
-        }
-
-        function renderButtons() {
-            const buttonGrid = document.getElementById('buttonGrid');
-            buttonGrid.innerHTML = '';
-            
-            buttons.forEach((button, index) => {
-                const btn = document.createElement('a');
-                btn.href = button.url;
-                btn.target = "_blank";
-                btn.className = 'cyber-button';
-                btn.innerHTML = `<div class="video-number">${index + 1}</div><div class="video-title">${button.title}</div>`;
-                
-                buttonGrid.appendChild(btn);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attempt to autoplay music
+            const backgroundMusic = document.getElementById('background-music');
+            backgroundMusic.volume = 0.5; // Set volume to 50%
+            backgroundMusic.play().catch(error => {
+                console.log('Autoplay was prevented:', error);
             });
-        }
 
-        function updateDateTime() {
-            const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('dateTime').textContent = now.toLocaleDateString('en-US', options);
-        }
+            // Redirect button
+            document.getElementById('redirect-btn').addEventListener('click', function() {
+                window.location.href = '#'; // Replace with your link
+            });
+        });
     </script>
 </body>
 </html>
