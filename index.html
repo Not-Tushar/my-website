@@ -1,198 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADVANCED HACKING TUTORIALS</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', monospace;
-            color: #00ff00;
-            overflow-x: hidden;
-        }
-        
-        #video-background {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            background-size: cover;
-            filter: brightness(0.3);
-        }
-        
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 3em;
-            text-shadow: 0 0 10px #00ff00;
-            margin-bottom: 10px;
-        }
-        
-        .hosts {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            text-shadow: 0 0 5px #00ff00;
-        }
-        
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .video-btn {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 15px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Courier New', monospace;
-            border-radius: 5px;
-        }
-        
-        .video-btn:hover {
-            background: rgba(0, 255, 0, 0.2);
-            box-shadow: 0 0 10px #00ff00;
-        }
-        
-        .coming-soon {
-            font-size: 0.8em;
-            color: #ff0000;
-            display: none;
-            margin-top: 5px;
-        }
-        
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 50%;
-            border: 1px solid #00ff00;
-            cursor: pointer;
-        }
-        
-        .audio-control i {
-            font-size: 24px;
-            color: #00ff00;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADVANCED HACKING TUTORIALS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      color: #00ff00;
+      background-color: #0e0e0e;
+    }
+
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.3);
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 15px #00ff00;
+      animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00ff00 }
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .video-btn {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      padding: 1rem;
+      font-size: 1rem;
+      font-family: 'Courier New', monospace;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .video-btn:hover {
+      background-color: rgba(0, 255, 0, 0.2);
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    .audio-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff00;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .audio-control i {
+      color: #00ff00;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    .coming-soon {
+      font-size: 0.8rem;
+      color: #ff4d4d;
+      display: none;
+      text-align: center;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-    <video autoplay muted loop id="video-background">
-        <source src="mp.mp4" type="video/mp4">
-    </video>
-    
-    <audio id="bg-music" loop>
-        <source src="hell.mp3" type="audio/mpeg">
-    </audio>
-    
-    <div class="content">
-        <h1>ADVANCED HACKING TUTORIALS</h1>
-        <div class="hosts">Hosted by Tuhsar | Developer: Sohel</div>
-        
-        <div class="video-grid" id="video-container">
-            <!-- Video buttons will be generated here -->
-        </div>
+
+  <video autoplay muted loop id="video-background">
+    <source src="mp.mp4" type="video/mp4" />
+  </video>
+
+  <audio id="bg-music" loop>
+    <source src="hell.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Navigation -->
+  <nav class="container-fluid">
+    <ul><li><strong>HACK TUTORIALS</strong></li></ul>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#" role="button">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>ADVANCED HACKING TUTORIALS</h2>
+          <h3>Hosted by Tuhsar | Developer: Sohel</h3>
+        </hgroup>
+        <div class="video-grid" id="video-container"></div>
+      </section>
     </div>
-    
-    <div class="audio-control" id="audio-control" onclick="toggleAudio()">
-        <i class="fas fa-music"></i>
-    </div>
-    
-    <script>
-        // Generate 30 video buttons
-        const videoContainer = document.getElementById('video-container');
-        const videoLinks = [
-            // Add your actual video links here
-            // Example: 'https://example.com/video1',
-            // Leave empty for "Coming Soon"
-        ];
-        
-        for (let i = 1; i <= 30; i++) {
-            const videoBtn = document.createElement('button');
-            videoBtn.className = 'video-btn';
-            videoBtn.innerHTML = `Tutorial ${i}`;
-            
-            const comingSoon = document.createElement('div');
-            comingSoon.className = 'coming-soon';
-            comingSoon.innerHTML = 'Coming Soon';
-            
-            // If link exists for this button index
-            if (videoLinks[i-1]) {
-                videoBtn.onclick = function() {
-                    window.open(videoLinks[i-1], '_blank');
-                };
-            } else {
-                videoBtn.onclick = function() {
-                    // Hide all coming soon messages first
-                    document.querySelectorAll('.coming-soon').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                    // Show this button's coming soon message
-                    comingSoon.style.display = 'block';
-                };
-            }
-            
-            const btnContainer = document.createElement('div');
-            btnContainer.appendChild(videoBtn);
-            btnContainer.appendChild(comingSoon);
-            
-            videoContainer.appendChild(btnContainer);
+  </main>
+
+  <!-- Audio Button -->
+  <div class="audio-control" id="audio-control" onclick="toggleAudio()">
+    <i class="fas fa-music"></i>
+  </div>
+
+  <!-- Footer -->
+  <footer class="container">
+    <small><a href="#">Privacy Policy</a> • <a href="#">Contact</a></small>
+  </footer>
+
+  <script>
+    const videoContainer = document.getElementById('video-container');
+    const videoLinks = Array.from({ length: 30 }, (_, i) =>
+      `https://example.com/video${i + 1}`
+    );
+
+    videoLinks.forEach((link, i) => {
+      const videoBtn = document.createElement('button');
+      videoBtn.className = 'video-btn';
+      videoBtn.textContent = `Tutorial ${i + 1}`;
+      videoBtn.onclick = () => {
+        if (link) {
+          window.open(link, '_blank');
+        } else {
+          document.querySelectorAll('.coming-soon').forEach(el => el.style.display = 'none');
+          comingSoon.style.display = 'block';
         }
-        
-        // Audio control
-        const bgMusic = document.getElementById('bg-music');
-        const audioControl = document.getElementById('audio-control');
-        let isPlaying = false;
-        
-        // Try to autoplay music (may be blocked by browser)
-        function tryAutoplay() {
-            const promise = bgMusic.play();
-            
-            if (promise !== undefined) {
-                promise.then(_ => {
-                    isPlaying = true;
-                    audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
-                })
-                .catch(error => {
-                    isPlaying = false;
-                    audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                });
-            }
-        }
-        
-        // Try autoplay when page loads
-        window.addEventListener('load', tryAutoplay);
-        
-        // Toggle audio on/off
-        function toggleAudio() {
-            if (isPlaying) {
-                bgMusic.pause();
-                audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            } else {
-                bgMusic.play();
-                audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
-            }
-            isPlaying = !isPlaying;
-        }
-    </script>
+      };
+
+      const comingSoon = document.createElement('div');
+      comingSoon.className = 'coming-soon';
+      comingSoon.textContent = 'Coming Soon';
+
+      const wrapper = document.createElement('div');
+      wrapper.appendChild(videoBtn);
+      wrapper.appendChild(comingSoon);
+
+      videoContainer.appendChild(wrapper);
+    });
+
+    const bgMusic = document.getElementById('bg-music');
+    const audioControl = document.getElementById('audio-control');
+    let isPlaying = false;
+
+    function tryAutoplay() {
+      const promise = bgMusic.play();
+      if (promise !== undefined) {
+        promise.then(() => {
+          isPlaying = true;
+          audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }).catch(() => {
+          isPlaying = false;
+          audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        });
+      }
+    }
+
+    window.addEventListener('load', tryAutoplay);
+
+    function toggleAudio() {
+      if (isPlaying) {
+        bgMusic.pause();
+        audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      } else {
+        bgMusic.play();
+        audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </body>
 </html>
