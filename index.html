@@ -3,296 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Cybersecurity Training | Host By Tushar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Tushar - Red Teamer & Penetration Tester</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #e63946;
-            --secondary: #457b9d;
-            --accent: #a8dadc;
-            --dark: #1d3557;
-            --light: #f1faee;
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--light);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        #video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -100;
-            overflow: hidden;
-        }
-
-        #video-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            opacity: 0.7;
-            filter: brightness(0.4) contrast(1.1);
-        }
-
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
-            background: rgba(29, 53, 87, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .host-badge {
-            display: inline-block;
-            background: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.6);
-            animation: pulse 2s infinite alternate;
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--accent), var(--light), var(--accent));
+        .gradient-text {
+            background: linear-gradient(90deg, #ef4444, #d946ef);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-            text-transform: uppercase;
         }
-
-        .tagline {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+        
+        .certificate-card {
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            border-color: #ef4444;
+        }
+        
+        .tooltip {
             position: relative;
-        }
-
-        .tagline::after {
-            content: '';
-            display: block;
-            width: 150px;
-            height: 3px;
-            background: var(--primary);
-            margin: 1.5rem auto 0;
-        }
-
-        .video-section {
-            text-align: center;
-            margin: 4rem 0;
-            padding: 2rem;
-            background: rgba(69, 123, 157, 0.2);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 218, 220, 0.2);
-        }
-
-        .video-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .video-section p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), #ff4d4d);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
-            font-family: 'Orbitron', sans-serif;
-            margin: 1rem 0;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.6);
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            bottom: -50%;
-            left: -50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0));
-            transform: rotateZ(60deg) translate(-5em, 7.5em);
-            animation: sheen 3s infinite;
-        }
-
-        footer {
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #111;
+            color: #fff;
             text-align: center;
-            padding: 2rem;
-            background: rgba(29, 53, 87, 0.8);
-            border-radius: 10px;
-            margin-top: 3rem;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-
-        .credits {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .credit-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .credit-icon {
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .developer {
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .manager {
-            color: #f72585;
-            font-weight: bold;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% { box-shadow: 0 4px 15px rgba(230, 57, 70, 0.6); }
-            100% { box-shadow: 0 4px 25px rgba(230, 57, 70, 0.9); }
-        }
-
-        @keyframes shine {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        @keyframes sheen {
-            100% { transform: rotateZ(60deg) translate(1em, -7.5em); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .host-badge {
-                font-size: 1rem;
-            }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
-<body>
-    <div id="video-container">
-        <video id="video-background" autoplay muted loop>
-            <source src="mp.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <!-- Background Audio -->
-    <audio id="background-music" autoplay loop>
-        <source src="hell.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="content">
-        <header>
-            <div class="host-badge">HOST BY TUSHAR</div>
-            <h1>Advanced Cybersecurity</h1>
-            <p class="tagline">
-                Free access to 30+ training videos covering the latest cybersecurity techniques
-            </p>
-        </header>
-
-        <div class="video-section">
-            <h2>Comprehensive Video Library</h2>
-            <p>Get instant access to our collection of premium cybersecurity training videos</p>
-            <button id="redirect-btn" class="cta-button">
-                <i class="fas fa-lock-open"></i> Access Now
-            </button>
-        </div>
-
-        <footer>
-            <div>Advanced Cybersecurity Training Program</div>
-            <div class="credits">
-                <div class="credit-item">
-                    <span class="credit-icon"><i class="fas fa-code"></i></span>
-                    <span>Developer: <span class="developer">Sohel</span></span>
-                </div>
-                <div class="credit-item">
-                    <span class="credit-icon"><i class="fas fa-tasks"></i></span>
-                    <span>Manager: <span class="manager">Rohit</span></span>
+<body class="antialiased">
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+        <!-- Header Section -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
+            <div class="mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-2">Tushar</h1>
+                <h2 class="text-2xl md:text-3xl gradient-text font-bold">Red Teamer & Penetration Tester</h2>
+                <p class="text-gray-400 mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                    </svg>
+                    Based in India
+                </p>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="h-24 w-24 rounded-full overflow-hidden border-2 border-red-500">
+                    <img src="dp.jpg" alt="Professional headshot of Tushar in formal attire with cybersecurity themed background" class="h-full w-full object-cover" />
                 </div>
             </div>
-        </footer>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Attempt to autoplay music
-            const backgroundMusic = document.getElementById('background-music');
-            backgroundMusic.volume = 0.5; // Set volume to 50%
-            backgroundMusic.play().catch(error => {
-                console.log('Autoplay was prevented:', error);
-            });
-
-            // Redirect button
-            document.getElementById('redirect-btn').addEventListener('click', function() {
-                window.location.href = 'https://h43ker-lang.github.io/LOVEME/'; // Replace with your link
-            });
-        });
-    </script>
-</body>
-</html>
+        </header>
+        
+        <!-- About Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 border-b border-gray-800 pb-2">About Me</h3>
+            <div class="bg-gray-900 p-6 rounded-lg">
+                <p class="text-gray-300 leading-relaxed">
+                    Cybersecurity professional specializing in offensive security, penetration testing, and red team operations. Certified ethical hacker with expertise in identifying vulnerabilities, conducting security assessments, and penetration testing across web applications, networks, and wireless systems.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 border-b border-gray-800 pb-2">Skills & Expertise</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-900 p-4 rounded-lg">
+                    <h4 class="font-bold text-lg mb-3 text-red-400">Penetration Testing</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Web Application Security
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Network Security Assessment
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            API Security Testing
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-900 p-4 rounded-lg">
+                    <h4 class="font-bold text-lg mb-3 text-purple-400">Tools & Technologies</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Burp Suite, Metasploit
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Wireshark, Nmap
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Python, Bash Scripting
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-900 p-4 rounded-lg">
+                    <h4 class="font-bold text-lg mb-3 text-blue-400">Wireless Security</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            WiFi Security Assessment
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            Bluetooth Security Testing
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            RF Security Analysis
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 border-b border-gray-800 pb-2">Certifications</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Certification 1 -->
+                <div class="certificate-card bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="EH.jpg" alt="Certified Ethical Hacker certificate showcasing recognition as a white hat hacker and penetration tester" class="w-full h-full object-contain bg-black p-4" />
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-1">Certified Ethical Hacker</h4>
+                        <p class="text-gray-400 text-sm mb-3">Recognized White Hat Hacker & Penetration Tester</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-gray-800 px-2 py-1 rounded text-red-400">Certification</span>
+                            <span class="text-xs text-gray-500">2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="certificate-card bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="PY.jpg" alt="Python for Hackers certificate demonstrating mastery of Python programming for cybersecurity applications" class="w-full h-full object-contain bg-black p-4" />
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-1">Mastering Python for Hackers</h4>
+                        <p class="text-gray-400 text-sm mb-3">Advanced Python Programming for Security</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-gray-800 px-2 py-1 rounded text-blue-400">Certification</span>
+                            <span class="text-xs text-gray-500">2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="certificate-card bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="WI.jpg" alt="WiFi Hacker and Penetration Tester certification showing expertise in wireless security assessments" class="w-full h-full object-contain bg-black p-4" />
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-1">WiFi Hacker & Penetration Tester</h4>
+                        <p class="text-gray-400 text-sm mb-3">Wireless Network Security Specialist</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-gray-800 px-2 py-1 rounded text-purple-400">Certification</span>
+                            <span class="text-xs text-gray-500">2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 border-b border-gray-800 pb-2">Professional Experience</h3>
+            
+            <div class="space-y-6">
+                <!-- Experience 1 -->
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h4 class="font-bold text-lg">Senior Penetration Tester</h4>
+                            <p class="text-gray-400">CyberSec Solutions, India</p>
+                        </div>
+                        <div class="text-gray-500 text-sm">2025 - Present</div>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-gray-300">
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Conducted comprehensive penetration tests for Fortune 500 companies across finance, healthcare sectors
+                        </li>
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Led red team operations identifying critical vulnerabilities in enterprise networks
+                        </li>
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Developed custom exploitation tools and scripts automating repetitive security tasks
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h4 class="font-bold text-lg">Security Consultant</h4>
+                            <p class="text-gray-400">SecureNet Technologies, India</p>
+                        </div>
+                        <div class="text-gray-500 text-sm">2025 - 202Y</div>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-gray-300">
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Performed wireless security assessments identifying vulnerabilities in corporate WiFi networks
+                        </li>
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Conducted web application security assessments using Burp Suite and OWASP methodologies
+                        </li>
+                        <li class="flex">
+                            <span class="text-red-500 mr-2">•</span>
+                            Authored detailed technical reports documenting findings and remediation recommendations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 border-b border-gray-800 pb
